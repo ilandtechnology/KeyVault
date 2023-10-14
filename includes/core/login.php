@@ -48,7 +48,7 @@ echo '
     <div class="login-logo"><div style="margin:30px;">',
     isset($SETTINGS['custom_logo']) === true && empty($SETTINGS['custom_logo']) === false ?
         '<img src="' . (string) $SETTINGS['custom_logo'] . '" alt="" style="text-align:center; max-width:100px;" />' :
-        '<img src="includes/images/teampass-logo2-login.png" alt="Teampass Logo">',
+        '<img src="includes/images/teampass-logo2-login.png" alt="iLand Key Vault - iLand Technology Group" width="100px" height="100px">',
         '
         </div>
         <div style="font-weight:bold;">

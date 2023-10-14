@@ -210,7 +210,7 @@ if (array_key_exists($get['page'], $utilitiesPages) === true) {
     <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Teampass</title>
+    <title>iLand Key Vault</title>
     <script type='text/javascript'>
         //<![CDATA[
         if (window.location.href.indexOf('page=') === -1 &&
@@ -367,7 +367,7 @@ if (($session_validite_pw === null
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="<?php echo $SETTINGS['cpassman_url'] . '/index.php?page=' . ((int) $session_user_admin === 1 ? 'admin' : 'items'); ?>" class="brand-link">
-                    <img src="includes/images/teampass-logo2-home.png" alt="Teampass Logo" class="brand-image">
+                    <img src="includes/images/teampass-logo2-home.png" alt="iLand Key Vault - iLand Technology Group" class="brand-image" width="100%" height="100%">
                     <span class="brand-text font-weight-light"><?php echo TP_TOOL_NAME; ?></span>
                 </a>
 
@@ -656,10 +656,10 @@ if (($session_validite_pw === null
                         <i class="fa-solid fa-clock-o mr-2 infotip text-info pointer" title="<?php echo langHdl('server_time') . ' ' .
                             date($SETTINGS['date_format'], (int) $server['request_time']) . ' - ' .
                             date($SETTINGS['time_format'], (int) $server['request_time']); ?>"></i>
-                        <i class="fa-solid fa-users mr-2 infotip text-info pointer" title="<?php echo $session_nb_users_online . ' ' . langHdl('users_online'); ?>"></i>
-                        <a href="<?php echo DOCUMENTATION_URL; ?>" target="_blank" class="text-info"><i class="fa-solid fa-book mr-2 infotip" title="<?php echo langHdl('documentation_canal'); ?>"></i></a>
-                        <a href="<?php echo HELP_URL; ?>" target="_blank" class="text-info"><i class="fa-solid fa-life-ring mr-2 infotip" title="<?php echo langHdl('admin_help'); ?>"></i></a>
-                        <i class="fa-solid fa-bug infotip pointer text-info" title="<?php echo langHdl('bugs_page'); ?>" onclick="generateBugReport()"></i>
+                        <!-- <i class="fa-solid fa-users mr-2 infotip text-info pointer" title="<?php echo $session_nb_users_online . ' ' . langHdl('users_online'); ?>"></i> -->
+                        <!-- <a href="<?php echo DOCUMENTATION_URL; ?>" target="_blank" class="text-info"><i class="fa-solid fa-book mr-2 infotip" title="<?php echo langHdl('documentation_canal'); ?>"></i></a> -->
+                        <!-- <a href="<?php echo HELP_URL; ?>" target="_blank" class="text-info"><i class="fa-solid fa-life-ring mr-2 infotip" title="<?php echo langHdl('admin_help'); ?>"></i></a> -->
+                        <!-- <i class="fa-solid fa-bug infotip pointer text-info" title="<?php echo langHdl('bugs_page'); ?>" onclick="generateBugReport()"></i> -->
                     </div>
                 </div>
                 </div>
