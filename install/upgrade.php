@@ -74,7 +74,7 @@ if (file_exists($filename)) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        <title>TeamPass Upgrade</title>
+        <title>iLand Key Vault Upgrade</title>
         
         <meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -119,7 +119,7 @@ if (isset($_SERVER['HTTPS'])) {
 // HEADER
 echo '
     <div id="top" class="center-screen">
-        <div id="logo" class="lcol"><img src="../includes/images/teampass-logo2-home.png" /></div>
+        <div id="logo" class="lcol"><img src="../includes/images/teampass-logo2-login.png" /></div>
         <div class="lcol">
             <span class="header-title">'.strtoupper(TP_TOOL_NAME).'</span>
             <!--<span class="header-title-small"> v'.TP_VERSION.'</span>-->
@@ -129,7 +129,7 @@ echo '
         <div class="card card-default color-palette-box">
             <div class="card-header">
                 <h3 class="card-title">
-                    <i class="fas fa-people-carry mr-2"></i>Teampass upgrade
+                    <i class="fas fa-people-carry mr-2"></i>iLand Key Vault upgrade
                 </h3>
             </div>
             <div class="card-body">';
@@ -152,18 +152,18 @@ if (!isset($_GET['step']) && !isset($post_step)) {
                     <div class="callout callout-warning col-12">
                         <h5>Information</h5>
     
-                        <p>Upgrade process is about to start. This will upgrade Teampass database to version '.TP_VERSION.'.</p>
+                        <p>Upgrade process is about to start. This will upgrade iLand Key Vault database to version '.TP_VERSION.'.</p>
                         <p>Version 3 comes with a new secured encryption strategy getting rid of any Saltkey. It relies on public and private keys generated for each user. As an impact, this upgrade will automatically generate a One-Time-Code for each user and send by email. It will be requested on first login. Please ensure your users have filled in their email with a valid value.</p>
                     </div>
 
                     <div class="callout callout-info col-12">
-                        <h5>Before starting, take a couple of minutes to perform backup of current Teampass instance:</h5>
+                        <h5>Before starting, take a couple of minutes to perform backup of current iLand Key Vault instance:</h5>
     
                         <p>
                         <ul>
                             <li><i class="fas fa-exclamation-circle mr-2 text-danger"></i>Ensure to clear your browser cache (keyboard: <i>CTRL + F5</i>)</li>
                             <li><i class="fas fa-exclamation-triangle mr-2 text-warning"></i>Create a dump of your database</li>
-                            <li><i class="fas fa-exclamation-triangle mr-2 text-warning"></i>Perform a zip of the current Teampass folder</li>
+                            <li><i class="fas fa-exclamation-triangle mr-2 text-warning"></i>Perform a zip of the current iLand Key Vault folder</li>
                             <li><i class="fas fa-info-circle mr-2 text-success"></i>Refer to <a href="https://teampass.readthedocs.io/en/latest/install/upgrade/" target="_blank" class="text-info">upgrade documentation</a>.</li>
                         </ul>
                         </p>
@@ -204,11 +204,11 @@ if (!isset($_GET['step']) && !isset($post_step)) {
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label>Absolute path to TeamPass folder</label>
+                                <label>Absolute path to iLand Key Vault folder</label>
                                 <input type="text" class="form-control" id="root_path" value="'.$abs_path.'">
                             </div>
                             <div class="form-group">
-                                <label>Full URL to TeamPass</label>
+                                <label>Full URL to iLand Key Vault</label>
                                 <input type="text" class="form-control" id="root_url" value="'.$protocol.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/') - 8).'">
                             </div>
                         </div>
@@ -340,7 +340,7 @@ if (!isset($_GET['step']) && !isset($post_step)) {
                             <label for="no_maintenance_mode">Don\'t activate the Maintenance mode</label>
                         </div>
                         <small class="form-text text-muted">
-                            By default, the maintenance mode is enabled when an Update is performed. This prevents the use of TeamPass while the scripts are running.<br />
+                            By default, the maintenance mode is enabled when an Update is performed. This prevents the use of iLand Key Vault while the scripts are running.<br />
                             However, some administrators may prefer to warn the users in another way. Nevertheless, keep in mind that the update process may fail or even be corrupted due to parallel queries.
                         </small>
                     </div>
@@ -372,11 +372,11 @@ if (!isset($_GET['step']) && !isset($post_step)) {
                         <div>
                             Please select:&nbsp;<select id="no_key_selection">
                             <option value="false">-- select --</option>
-                            <option value="no_previous_sk_sel">We have never used Teampass in an older version than 2.1.27(.x)</option>
-                            <option value="previous_sk_sel">We have used Teampass in an older version (example: 2.1.26)</option>
+                            <option value="no_previous_sk_sel">We have never used iLand Key Vault in an older version than 2.1.27(.x)</option>
+                            <option value="previous_sk_sel">We have used iLand Key Vault in an older version (example: 2.1.26)</option>
                         </select>
                         <div id="previous_sk_div" style="display:none;">
-                            <p>Please use the next field to enter the saltkey you used in previous version of Teampass. It can be retrieved by editing sk.php file (in case you are upgrading from a version older than 2.1.27) or a sk.php backup file (in case you are upgrading from 2.1.27).<br>
+                            <p>Please use the next field to enter the saltkey you used in previous version of iLand Key Vault. It can be retrieved by editing sk.php file (in case you are upgrading from a version older than 2.1.27) or a sk.php backup file (in case you are upgrading from 2.1.27).<br>
                             </p>
                             <label for="previous_sk">Previous SaltKey:&nbsp</label>
                             <input type="text" id="previous_sk" size="100px" value="'.@$_SESSION['encrypt_key'].'" />
@@ -410,7 +410,7 @@ if (!isset($_GET['step']) && !isset($post_step)) {
             <div class="card-body">
                 <div>
                 ', $conversion_utf8 === true ?
-                'Notice that TeamPass is now only using UTF-8 charset.
+                'Notice that iLand Key Vault is now only using UTF-8 charset.
                 This step will convert the database to this charset.
                 <div>
                 <input type="checkbox" id="prefix_before_convert" class="mr-2"><label for="prefix_before_convert">Save previous tables before converting (prefix "old_" will be used)</label>
@@ -498,7 +498,7 @@ if (!isset($_GET['step']) && !isset($post_step)) {
         <h4>Upgrade is now completed</h4>
         <div class="callout callout-info mt-4">
             <div>
-                For news, help and information, visit <a href="https://teampass.net" target="_blank" class="text-info">TeamPass website</a>
+                For news, help and information, visit <a href="https://ilandtechnology.com" target="_blank" class="text-info">iLand Key Vault website</a>
             </div>
         </div>
         <div class="alert alert-primary mt-4">
@@ -515,7 +515,7 @@ if (!isset($_GET['step']) && !isset($post_step)) {
 
     echo '
         <div class="mt-5">
-        <a href="#" class="btn btn-primary" onclick="javascript:window.location.href=\'', (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https' : 'http', '://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/') - 8).'\';"><b>Open TeamPass</b></a>
+        <a href="#" class="btn btn-primary" onclick="javascript:window.location.href=\'', (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') ? 'https' : 'http', '://'.$_SERVER['HTTP_HOST'].substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/') - 8).'\';"><b>Open iLand Key Vault</b></a>
         </div>';
 }
 
