@@ -1772,7 +1772,7 @@ if (
     function clearClipboardTimeout(duration) {
         // Wait for duration
         $(this).delay(duration * 1000).queue(function() {
-            navigator.clipboard.writeText("Cleared by Teampass").then(function() {
+            navigator.clipboard.writeText("Cleared by iLand Key Vault").then(function() {
                 // clipboard successfully set
             }, function() {
                 // clipboard write failed
