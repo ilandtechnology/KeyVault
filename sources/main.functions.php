@@ -1458,28 +1458,43 @@ function buildEmail(
  */
 function emailBody(string $textMail): string
 {
-    return '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
-    w3.org/TR/html4/loose.dtd"><html>
-    <head><title>Email Template</title>
-    <style type="text/css">
-    body { background-color: #f0f0f0; padding: 10px 0; margin:0 0 10px =0; }
-    </style></head>
-    <body style="-ms-text-size-adjust: none; size-adjust: none; margin: 0; padding: 10px 0; background-color: #f0f0f0;" bgcolor="#f0f0f0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="border-spacing: 0;">
-    <tr><td style="border-collapse: collapse;"><br>
-        <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#17357c" style="border-spacing: 0; margin-bottom: 25px;">
-        <tr><td style="border-collapse: collapse; padding: 11px 20px;">
-            <div style="max-width:150px; max-height:34px; color:#f0f0f0; font-weight:bold;">Teampass</div>
-        </td></tr></table></td>
-    </tr>
-    <tr><td align="center" valign="top" bgcolor="#f0f0f0" style="border-collapse: collapse; background-color: #f0f0f0;">
-        <table width="600" cellpadding="0" cellspacing="0" border="0" class="container" bgcolor="#ffffff" style="border-spacing: 0; border-bottom: 1px solid #e0e0e0; box-shadow: 0 0 3px #ddd; color: #434343; font-family: Helvetica, Verdana, sans-serif;">
-        <tr><td class="container-padding" bgcolor="#ffffff" style="border-collapse: collapse; border-left: 1px solid #e0e0e0; background-color: #ffffff; padding-left: 30px; padding-right: 30px;">
-        <br><div style="float:right;">' .
-        $textMail .
-        '<br><br></td></tr></table>
-    </td></tr></table>
-    <br></body></html>';
+    return '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <title>Email Template</title>
+            <style type="text/css">
+            body { background-color:#f0f0f0;padding:10px 0;margin:0 0 10px =0;}
+            </style>
+        </head>
+        <body style="-ms-text-size-adjust:none;size-adjust:none;margin:0;padding:10px 0;background-color:#f0f0f0;font-family:\'Open Sans\';">
+        <div align="center">
+            <table border="0" width="600" cellpadding="0" cellspacing="0" bgcolor="#f0f0f0" style="border-spacing">
+                <tr><td style="border-collapse:collapse;"><br>
+                <div align="center">
+                    <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="#D34531" style="border-spacing: 0; marg">
+                        <tr><td style="border-collapse:collapse;padding:11px 20px;">
+                            <div style="max-width:150px;max-height:34px;color:#f0f0f0;font-weight:bold;font-family:arial;">iLand Key Vault</div>
+                        </td></tr>
+                    </table>
+                </div>
+                </td></tr>
+            <tr><td align="center" valign="top" bgcolor="#f0f0f0" style="border-collapse:collapse;background-color:#f0f0f0;">
+            <div align="center">
+                <table border="0" width="600" cellpadding="0" cellspacing="0" class="container" bgcolor="#ffffff" style="border">
+                <tr><td class="container-padding" bgcolor="#ffffff" style="border-collapse:collapse;padding:11px 20px;border-left:1px solid #e">
+                    <br><div style="float:right;">' .
+                    $textMail .
+                    '</div><br><br>
+                </td></tr>
+                </table>
+            </div>
+            </td></tr>
+            </table>
+            <br>
+        </div>
+        </body>
+    </html>';
 }
 
 /**

@@ -1014,7 +1014,7 @@ function cronContinueReEncryptingUserSharekeysStep10(
         sendMailToUser(
             filter_var($userInfo['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS),
             empty($extra_arguments['email_body']) === false ? $extra_arguments['email_body'] : langHdl('email_body_user_config_1'),
-            'TEAMPASS - ' . langHdl('login_credentials'),
+            'iLand Key Vault - ' . langHdl('login_credentials'),
             (array) filter_var_array(
                 [
                     '#code#' => cryption($extra_arguments['new_user_code'], '','decrypt', $SETTINGS)['string'],
