@@ -23,7 +23,7 @@ define('MIN_PHP_VERSION', 7.4);
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-	<title>TeamPass Installation</title>
+	<title>iLand Key Vault Installation</title>
 	<meta http-equiv='Content-Type' content='text/html;charset=utf-8' />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -102,7 +102,7 @@ define('MIN_PHP_VERSION', 7.4);
 	// # HEADER ##
 	echo '
 	<div id="top">
-		<div id="logo" class="lcol"><img src="../includes/images/teampass-logo2-home.png" /></div>
+		<div id="logo" class="lcol"><img src="../includes/images/teampass-logo2-login.png" /></div>
 		<div class="lcol">
 			<span class="header-title">' . strtoupper(TP_TOOL_NAME) . '</span>
 		</div>
@@ -136,9 +136,9 @@ define('MIN_PHP_VERSION', 7.4);
 		echo '
 				<div class="row">
                     <div class="callout callout-warning col-12">
-                        <h5><i class="fas fa-info-circle text-warning mr-2"></i>Welcome to Teampass installation</h5>
+                        <h5><i class="fas fa-info-circle text-warning mr-2"></i>Welcome to iLand Key Vault installation</h5>
     
-                        <p>This seems to be the 1st time Teampass will be installed on this server.<br>
+                        <p>This seems to be the 1st time iLand Key Vault will be installed on this server.<br>
 						It will proceed with installation of release <b>' . TP_VERSION . '</b>.</p>
                     </div>
 
@@ -155,7 +155,7 @@ define('MIN_PHP_VERSION', 7.4);
 					<div class="callout callout-danger col-12 mt-3">
                         <h5><i class="fas fa-ruler text-danger mr-2"></i>License</h5>
     
-                        <p>TeamPass is distributed under GNU GENERAL PUBLIC LICENSE version 3.</p>
+                        <p>iLand Key Vault (Teampass) is distributed under GNU GENERAL PUBLIC LICENSE version 3.</p>
 						<p><a class="text-primary" target="_blank" href="https://spdx.org/licenses/GPL-3.0-only.html#licenseText">Read complete license</a>
                     </div>
                 </div>';
@@ -170,15 +170,15 @@ define('MIN_PHP_VERSION', 7.4);
 		<div class="col-12">
 			<div class="card card-primary">
 				<div class="card-header">
-					<h5>Teampass instance information</h5>
+					<h5>iLand Key Vault instance information</h5>
 				</div>
 				<div class="card-body">
 					<div class="form-group">
-						<label>Absolute path to TeamPass folder</label>
+						<label>Absolute path to iLand Key Vault folder</label>
 						<input type="text" class="form-control" name="absolute_path" id="absolute_path" class="ui-widget" value="' . $abs_path . '">
 					</div>
 					<div class="form-group">
-						<label>Full URL to TeamPass</label>
+						<label>Full URL to iLand Key Vault</label>
 						<input type="text" class="form-control" name="url_path" id="url_path" class="ui-widget" value="' . $protocol . $_SERVER['HTTP_HOST'] . substr($_SERVER['PHP_SELF'], 0, strrpos($_SERVER['PHP_SELF'], '/') - 8) . '">
 					</div>
 				</div>
@@ -276,7 +276,7 @@ define('MIN_PHP_VERSION', 7.4);
 		<div class="col-12">
 			<div class="card card-primary">
 				<div class="card-header">
-					<h5>Teampass set-up</h5>
+					<h5>iLand Key Vault set-up</h5>
 				</div>
 				<div class="card-body">
 					<div class="form-group">
@@ -288,12 +288,12 @@ define('MIN_PHP_VERSION', 7.4);
 						<label>Absolute path to SaltKey</label>
 						<input type="text" class="form-control" name="sk_path" id="sk_path" class="ui-widget" value=""><span id="res4_check2"></span>
 						<small class="form-text text-muted">
-							The SaltKey is stored in a file called teampass-seckey.txt and hashed for security purpose. For security reasons, this file should be stored in a folder outside the WWW folder of your server (example: /var/teampass/). This key will be used to encrypt data when sharing information with users without any Teampass account. If this field remains empty, this file will be stored in folder <path to Teampass>/includes/.
+							The SaltKey is stored in a file called teampass-seckey.txt and hashed for security purpose. For security reasons, this file should be stored in a folder outside the WWW folder of your server (example: /var/teampass/). This key will be used to encrypt data when sharing information with users without any iLand Key Vault account. If this field remains empty, this file will be stored in folder <path to Teampass>/includes/.
 						</small>
 					</div>
 		
 					<div class="form-group">
-						<label>Teampass Administrator password</label>
+						<label>iLand Key Vault Administrator password</label>
 						<input type="password" class="form-control" id="admin_pwd" class="ui-widget" value=""><span id="res4_check10"></span>
 					</div
 					
@@ -363,10 +363,10 @@ define('MIN_PHP_VERSION', 7.4);
 		echo '
 	<div class="row">
 		<div class="callout callout-primary col-12">
-			<h4>Thank you for installing <b>Teampass</b>.</h4>
+			<h4>Thank you for installing <b>iLand Key Vault</b>.</h4>
 			<div class="card-body">
 				<div class="alert alert-info">
-					The final step is now to move to the authentication page and start using <b>Teampass</b>.<br>
+					The final step is now to move to the authentication page and start using <b>iLand Key Vault</b>.<br>
 					The Administrator login is `<b>admin</b>`.
 					<br>
 					Its password is the one you have written during the installation process.
@@ -383,7 +383,7 @@ define('MIN_PHP_VERSION', 7.4);
 				</div>
 				
 				<div class="alert alert-warning mt-8">
-					For news, help and information, please visit <a href="https://teampass.net" target="_blank">TeamPass website</a>.
+					For news, help and information, please visit <a href="https://il-keyvault.ilandsolucoes.com.br" target="_blank">iLand Key Vault website</a>.
 				</div>
 			</div>
 		</div>
