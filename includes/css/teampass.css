@@ -12,7 +12,7 @@
  */
 
 .login-page {
-    background: url("../images/login_wall_5.jpg") no-repeat center center fixed;
+    /*background: url("../images/login_wall_5.jpg") no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -20,10 +20,11 @@
     height: 100%;
     background-position: center center;
     background-size: cover; 
+    background-color: #ED4640;
 }
 
 .otv-page {
-    background: url("../images/otv-wall-1.jpg") no-repeat center center fixed;
+    /*background: url("../images/otv-wall-1.jpg") no-repeat center center fixed; */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -246,9 +247,9 @@
 }
 
 .login-logo {
-    letter-spacing: 4px;
-    font-size: 40pt;
-    color: #082d51;
+    letter-spacing: 3px;
+    font-size: 35pt;
+    color: #e9ecef;
 }
 
 .img-modal {
