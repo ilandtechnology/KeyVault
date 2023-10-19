@@ -163,8 +163,8 @@ div.disabled > .toggle-slide {
 }
 .toggle-modern .toggle-on,
 .toggle-modern .toggle-on.active {
-  background: -webkit-linear-gradient(#4894cd, #2852a6);
-  background: linear-gradient(#4894cd, #2852a6);
+  background: -webkit-linear-gradient(#ED4640, #D34531);
+  background: linear-gradient(#ED4640, #D34531);
 }
 .toggle-modern .toggle-blob {
   background: -webkit-linear-gradient(#c0c6c9, #81898f);
