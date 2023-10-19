@@ -1702,7 +1702,7 @@ function googleMFACheck(string $username, array $userInfo, $dataReceived, array 
             $mfaMessage = langHdl('ga_flash_qr_and_login');
             // generate new QR
             $new_2fa_qr = $tfa->getQRCodeImageAsDataUri(
-                'Teampass - ' . $username,
+                'iLand Key Vault - ' . $username,
                 $userInfo['ga']
             );
             // clear temporary code from DB
