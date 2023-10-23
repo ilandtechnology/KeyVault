@@ -438,7 +438,6 @@ if (checkUser($_SESSION['user_id'], $_SESSION['key'], 'tasks', $SETTINGS) === fa
     // MANAGE TASK DEFINITION
     $(document).on('click', '.task-define', function() {
         // Open modal
-        console.log($(this).data('task'))
         let task = $(this).data('task'),
             definition = $('#'+task+'_parameter_value').val().split(';');
         $('#task-define-modal-frequency option[value="'+definition[0]+'"]').prop('selected', true);
@@ -476,6 +475,131 @@ if (checkUser($_SESSION['user_id'], $_SESSION['key'], 'tasks', $SETTINGS) === fa
             $('#task-define-modal-parameter-daily').removeClass('hidden');
             $('#task-define-modal-parameter-hourly, #task-define-modal-parameter-monthly').addClass('hidden');
         }
+    });
+    
+    $(document).on('click', '.task-perform', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        let taskButton = $(this);
+
+        // Prepare modal
+        showModalDialogBox(
+            '#warningModal',
+            '<i class="fa-regular fa-circle-check fa-lg text-warning mr-2"></i><?php echo langHdl('your_attention_please'); ?>',
+            '<?php echo langHdl('please_confirm_task_to_be_run'); ?>: <strong>' + $('#'+$(this).data('task')+'_text').text() + '</strong>',
+            '<?php echo langHdl('perform'); ?>',
+            '<?php echo langHdl('close'); ?>',
+            false,
+            false,
+            false
+        );
+
+        // Actions on modal buttons
+        $(document).on('click', '#warningModalButtonAction', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            let launchedTask = $(taskButton).data('task'),
+                launchedButton = $(taskButton);
+
+            // Inform user
+            $('<i class="fa-solid fa-circle-notch fa-spin ml-2 text-teal" id="'+launchedTask+'_spinner"></i>').insertAfter($(this));
+            launchedButton.prop('disabled', true);
+
+            toastr.remove();
+            toastr.success(
+                '<?php echo langHdl('started'); ?>',
+                '', {
+                    timeOut: 2000,
+                    progressBar: true
+                }
+            );
+            
+            // Store in DB   
+            $.post(
+                "sources/tasks.queries.php",
+                {
+                    type: "perform_task",
+                    task: launchedTask,
+                    key: "<?php echo $_SESSION['key']; ?>"
+                },
+                function(data) {
+                    // Handle server answer
+                    try {
+                        data = prepareExchangedData(data, "decode", "<?php echo $_SESSION['key']; ?>");
+                    } catch (e) {
+                        // error
+                        toastr.remove();
+                        toastr.error(
+                            '<?php echo langHdl('server_answer_error') . '<br />' . langHdl('server_returned_data') . ':<br />'; ?>' + data.error,
+                            '', {
+                                closeButton: true,
+                                positionClass: 'toastr-top-right'
+                            }
+                        );
+                        return false;
+                    }
+                    console.log(data);
+                    if (data.error === false) {
+                        toastr.remove();
+                        toastr.success(
+                            '<?php echo langHdl('done'); ?>',
+                            '', {
+                                timeOut: 2000,
+                                progressBar: true
+                            }
+                        );
+                    }
+                    $('#'+launchedTask+'_badge').text(data.datetime);
+                    $('#'+launchedTask+'_spinner').remove();
+                    launchedButton.prop('disabled', false);
+                    requestRunning = false;
+                    $('#warningModal').modal('hide');
+                }
+            );
+        });        
+    });
+
+    // get last tasks execution
+    function refreshTasksTime()
+    {
+        $('#go_refresh').removeClass('hidden');
+        $.post(
+            "sources/tasks.queries.php",
+            {
+                type: "load_last_tasks_execution",
+                key: "<?php echo $_SESSION['key']; ?>"
+            },
+            function(data) {
+                // Handle server answer
+                try {
+                    data = prepareExchangedData(data, "decode", "<?php echo $_SESSION['key']; ?>");
+                } catch (e) {
+                    // error
+                    toastr.remove();
+                    toastr.error(
+                        '<?php echo langHdl('server_answer_error') . '<br />' . langHdl('server_returned_data') . ':<br />'; ?>' + data.error,
+                        '', {
+                            closeButton: true,
+                            positionClass: 'toastr-top-right'
+                        }
+                    );
+                    return false;
+                }
+                
+                let tasks = JSON.parse(data.task);
+                for (let i = 0; i < tasks.length; i++) {
+                    $('#'+tasks[i].task+'_badge').text(tasks[i].datetime);
+
+                }
+                $('#go_refresh').addClass('hidden');
+            }
+        );
+    }
+
+    // On page load
+    $(function() {
+        refreshTasksTime();
+        setInterval(refreshTasksTime, 10000);
     });
 
     //]]>

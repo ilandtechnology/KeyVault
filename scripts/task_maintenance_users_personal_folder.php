@@ -56,14 +56,13 @@ DB::$ssl = DB_SSL;
 DB::$connect_options = DB_CONNECT_OPTIONS;
 
 // log start
-$logID = doLog('start', 'do_maintenance - users-personal-folder', (isset($SETTINGS['enable_tasks_log']) === true ? (int) $SETTINGS['enable_tasks_log'] : 0));
+$logID = doLog('start', 'do_maintenance - users-personal-folder', 1);
 
 // Perform maintenance tasks
 createUserPersonalFolder();
 
 // log end
-doLog('end', '', (isset($SETTINGS['enable_tasks_log']) === true ? (int) $SETTINGS['enable_tasks_log'] : 0), $logID);
-
+doLog('end', '', 1, $logID);
 
 /**
  * Permits to create the personal folder for each user.
@@ -78,13 +77,14 @@ function createUserPersonalFolder(): void
     $tree = new Tree\NestedTree\NestedTree(prefixTable('nested_tree'), 'id', 'parent_id', 'title');
 
     //get through all users
-    $rows = DB::query(
+    $users = DB::query(
         'SELECT id, login, email
         FROM ' . prefixTable('users') . '
         WHERE id NOT IN ('.OTV_USER_ID.', '.TP_USER_ID.', '.SSH_USER_ID.', '.API_USER_ID.')
         ORDER BY login ASC'
     );
-    foreach ($rows as $record) {
+    foreach ($users as $user) {
+        /*
         //update PF field for user
         DB::update(
             prefixTable('users'),
@@ -92,15 +92,16 @@ function createUserPersonalFolder(): void
                 'personal_folder' => '1',
             ),
             'id = %i',
-            $record['id']
+            $user['id']
         );
+        */
 
         //if folder doesn't exist then create it
         $data = DB::queryfirstrow(
             'SELECT id
             FROM ' . prefixTable('nested_tree') . '
             WHERE title = %s AND parent_id = %i',
-            $record['id'],
+            $user['id'],
             0
         );
         $counter = DB::count();
@@ -110,7 +111,7 @@ function createUserPersonalFolder(): void
                 prefixTable('nested_tree'),
                 array(
                     'parent_id' => '0',
-                    'title' => $record['id'],
+                    'title' => $user['id'],
                     'personal_folder' => '1',
                     'categories' => '',
                 )
@@ -126,7 +127,7 @@ function createUserPersonalFolder(): void
                     'personal_folder' => '1',
                 ),
                 'title=%s AND parent_id=%i',
-                $record['id'],
+                $user['id'],
                 0
             );
             //rebuild fuild tree folder
@@ -146,5 +147,8 @@ function createUserPersonalFolder(): void
                 );
             }
         }
+
+        // Ensure only the user items have a sharekey
+        purgeUnnecessaryKeys(false, $user['id']);
     }
 }
